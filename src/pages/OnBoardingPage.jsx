@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Icon1 from "../assets/onBoardingIcon/onBoardingIcon1.svg";
 import Icon2 from "../assets/onBoardingIcon/onBoardingIcon2.svg";
 import Icon3 from "../assets/onBoardingIcon/onBoardingIcon3.svg";
 import Icon4 from "../assets/onBoardingIcon/onBoardingIcon4.svg";
 
 const OnBoardingPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center items-center gap-4 px-4 pt-32 pb-8">
       <div className="flex items-center justify-center text-6xl font-bold text-orange-400">
@@ -70,11 +72,22 @@ const OnBoardingPage = () => {
           </div>
         </div>
       </section>
-      <div class="flex flex-col items-center gap-[10px] w-[329px] h-[74px]">
-        <div class="flex items-center justify-center gap-[10px] w-[329px] h-[61px] px-[10px] py-[8px] rounded-[12px] bg-orange-400 overflow-hidden">
-          <p class="text-lg font-bold text-white">시작하기</p>
-        </div>
-      </div>
+      <button
+        onClick={() => navigate("/login")}
+        className="
+          flex items-center justify-center gap-[10px]
+          w-[329px] h-[61px]
+          px-[10px] py-[8px]
+          rounded-[12px]
+          bg-orange-400
+          text-lg font-bold text-white
+          overflow-hidden
+          hover:bg-orange-500
+          transition-colors duration-100
+        "
+      >
+        시작하기
+      </button>
     </div>
   );
 };
