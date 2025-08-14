@@ -1,13 +1,13 @@
 const OnBoardingPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center gap-8 px-4 pt-32 pb-8">
-      <div className="flex item-center justify-center text-6xl font-bold text-orange-400">
+    <div className="flex flex-col justify-center items-center gap-4 px-4 pt-32 pb-8">
+      <div className="flex items-center justify-center text-6xl font-bold text-orange-400">
         Sallang
       </div>
       <div className="flex flex-col justify-center items-center px-5 p-2 gap-4">
         <p className="text-2xl font-bold">살랑에 오신 것을 환영합니다</p>
         <div className="gap-3 px-4 items-center">
-          <p className="flex justify-centeritems-center text-center text-lg font-medium text-neutral-500 ">
+          <p className="flex justify-center items-center text-center text-lg font-medium text-neutral-500 ">
             대구의 무더위로부터 당신을 지켜드리는
           </p>
           <p className="flex justify-center items-center text-center text-lg font-medium text-neutral-500 ">
@@ -15,7 +15,53 @@ const OnBoardingPage = () => {
           </p>
         </div>
       </div>
-      <div className="flex text-"></div>
+      <section className="flex flex-col items-center p-[10px] rounded-[8px] border-2 border-orange-200">
+        {/*  주요 기능 frame1 */}
+        <div className="flex items-center gap-1 px-4 py-[9px]">
+          <div className="flex items-center gap-[10px] px-1 pr-0">
+            <p className="text-xl font-bold leading-[28px] text-orange-700">
+              주요 기능
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-[10px] px-4 py-3 w-[339px] h-[48px]rounded-lg">
+          <div className="flex w-6 h-6 items-center justify-center p-1 rounded-full bg-orange-600"></div>
+          <div className="flex items-center gap-2 w-[251px] h-[24px]overflow-hidden">
+            <p className="text-base font-semibold text-orange-500">
+              AI 기반 온열질환 위험도 분석
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-[10px] px-4 py-3 w-[339px] h-[48px]rounded-lg">
+          <div className="flex w-6 h-6 items-center justify-center p-1 rounded-full bg-orange-600"></div>
+          <div className="flex items-center gap-2 w-[251px] h-[24px]overflow-hidden">
+            <p className="text-base font-semibold text-orange-500">
+              실시간 무더위쉼터 추천
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-[10px] px-4 py-3 w-[339px] h-[48px]rounded-lg">
+          <div className="flex w-6 h-6 items-center justify-center p-1 rounded-full bg-orange-600"></div>
+          <div className="flex items-center gap-2 w-[251px] h-[24px]overflow-hidden">
+            <p className="text-base font-semibold text-orange-500">
+              개인 맞춤 건강 알림
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-[10px] px-4 py-3 w-[339px] h-[48px]rounded-lg">
+          <div className="flex w-6 h-6 items-center justify-center p-1 rounded-full bg-orange-600"></div>
+          <div className="flex items-center gap-2 w-[251px] h-[24px]overflow-hidden">
+            <p className="text-base font-semibold text-orange-500">
+              일일 건강 리포트
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="flex flex-col items-center gap-[10px] w-[329px] h-[74px]">
+        <div class="flex items-center justify-center gap-[10px] w-[329px] h-[61px] px-[10px] py-[8px] rounded-[12px] bg-orange-400 overflow-hidden">
+          <p class="text-lg font-bold text-white">시작하기</p>
+        </div>
+      </div>
     </div>
   );
 };
