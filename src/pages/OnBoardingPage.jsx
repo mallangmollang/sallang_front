@@ -83,6 +83,7 @@ const OnBoardingPage = () => {
           text-lg font-bold text-white
           overflow-hidden
           hover:bg-orange-500
+          cursor-pointer
           transition-colors duration-100
         "
       >
