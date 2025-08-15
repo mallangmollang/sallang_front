@@ -6,8 +6,10 @@ import TextInputForm from "../components/TextInputForm";
 
 const LoginPage = () => {
   const [name, setName] = useState("");
+  const [gender, setGender] = useState(null);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+
   const [selectedEtc, setSelectedEtc] = useState(false);
   const [etcText, setEtcText] = useState("");
 
@@ -44,8 +46,16 @@ const LoginPage = () => {
             <p className="text-xs font-semibold text-black">성별</p>
           </div>
           <div className="flex flex-row w-[361px] h-[66px] items-center gap-1">
-            <SelectButton label="남성" />
-            <SelectButton label="여성" />
+            <SelectButton
+              label="남성"
+              selected={gender === "남성"}
+              onClick={() => setGender("남성")}
+            />
+            <SelectButton
+              label="여성"
+              selected={gender === "여성"}
+              onClick={() => setGender("여성")}
+            />
           </div>
         </div>
         <div className="flex flex-row h-[68px] gap-1 items-center">
@@ -84,7 +94,9 @@ const LoginPage = () => {
             <SelectButton label="신장병" />
             <SelectButton
               label="기타"
-              onClick={() => setSelectedEtc((prev) => !prev)}
+              onClick={() => {
+                setSelectedEtc((prev) => !prev);
+              }}
               defaultSelected={selectedEtc}
             />
             <SelectButton label="없음" />
