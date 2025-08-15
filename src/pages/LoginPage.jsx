@@ -80,6 +80,7 @@ const LoginPage = () => {
             <SelectButton label="심장병" />
             <SelectButton label="신장병" />
             <SelectButton label="기타" />
+            <SelectButton label="없음" />
           </div>
         </div>
         <button
