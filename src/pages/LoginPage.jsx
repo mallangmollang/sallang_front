@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
+import SelectButton from "../components/SelectButton";
 
 const LoginPage = () => {
   return (
@@ -38,12 +39,14 @@ const LoginPage = () => {
             <p className="text-xs font-semibold text-black">성별</p>
           </div>
           <div className="flex flex-row w-[361px] h-[66px] items-center gap-1">
-            <selectButton className="flex flex-row w-[174px] h-[55px] items-center px-4 py-1 overflow-hidden rounded-[12px] bg-orange-100 border-2 border-orange-500 border-solid">
+            {/* <selectButton className="flex flex-row w-[174px] h-[55px] items-center px-4 py-1 overflow-hidden rounded-[12px] bg-orange-100 border-2 border-orange-500 border-solid">
               <p className="text-sm font-bold text-orange-500">남성</p>
             </selectButton>
             <selectButton className="flex flex-row w-[174px] h-[55px] items-center px-4 py-1 overflow-hidden rounded-[12px] bg-white border-2 border-neutral-300 border-solid">
               <p className="text-sm font-bold text-black">여성</p>
-            </selectButton>
+            </selectButton> */}
+            <SelectButton label="남성" />
+            <SelectButton label="여성" />
           </div>
         </div>
       </div>
