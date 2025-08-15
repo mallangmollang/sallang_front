@@ -8,6 +8,9 @@ const LoginPage = () => {
   const [name, setName] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [selectedEtc, setSelectedEtc] = useState(false);
+  const [etcText, setEtcText] = useState("");
+
   return (
     <div
       className="
@@ -70,8 +73,8 @@ const LoginPage = () => {
           </div>
         </div>
         {/* 기저질환 */}
-        <div className="flex flex-col h-[227px] justify-center items-start gap-1">
-          <div className="flex flex-rpw gap-[10px] justify-start items-start overflow-hidden">
+        <div className="h-[270px] justify-center items-start gap-1">
+          <div className="flex flex-rpw gap-[10px] pb-1 justify-start items-start overflow-hidden">
             <p className="text-xs font-semibold text-black">기저질환</p>
           </div>
           <div className="flex flex-wrap w-[361px] h-[198px] gap-x-1 gap-y-0 overflow-hidden">
@@ -79,9 +82,21 @@ const LoginPage = () => {
             <SelectButton label="고혈압" />
             <SelectButton label="심장병" />
             <SelectButton label="신장병" />
-            <SelectButton label="기타" />
+            <SelectButton
+              label="기타"
+              onClick={() => setSelectedEtc((prev) => !prev)}
+              defaultSelected={selectedEtc}
+            />
             <SelectButton label="없음" />
           </div>
+          {selectedEtc && (
+            <TextInputForm
+              value={etcText}
+              onChange={(val) => setEtcText(val)}
+              onClear={() => setEtcText("")}
+              placeholder="기타 질환을 입력하세요"
+            />
+          )}
         </div>
         <button
           onClick={() => navigate("/main")}
