@@ -23,16 +23,19 @@ const LoginPage = () => {
       <div className="flex flex-col w-[361px] h-[852px] items-center gap-5 overflow-hidden bg-white">
         {/* 이름 */}
         <div className="flex flex-col items-start justify-start gap-1">
-          <div className="flex flex-row gap-2 overflow-hidden">
+          <div className="flex flex-row gap-[10px] overflow-hidden">
             <p className="text-xs font-semibold text-black">이름</p>
           </div>
-          <TextInputForm
-            value={name}
-            onChange={(val) => setName(val)}
-            onClear={() => setName("")}
-            placeholder="이름을 입력하세요"
-          />
+          <div className="flex flex-row w-[361px] h-[44px] items-center">
+            <TextInputForm
+              value={name}
+              onChange={(val) => setName(val)}
+              onClear={() => setName("")}
+              placeholder="이름을 입력하세요"
+            />
+          </div>
         </div>
+        {/* 성별 */}
         <div className="flex flex-col h-[86px] justify-start items-start gap-1">
           <div className="flex flex-row gap-[10px] justify-start items-start overflow-hidden">
             <p className="text-xs font-semibold text-black">성별</p>
@@ -42,7 +45,7 @@ const LoginPage = () => {
             <SelectButton label="여성" />
           </div>
         </div>
-        <div className="flex flex-row h-[68px] items-center">
+        <div className="flex flex-row h-[68px] gap-1 items-center">
           <div className="flex flex-col w-[174px] justify-start items-start gap-1">
             <div className="flex flex-row gap-2 overflow-hidden">
               <p className="text-xs font-semibold text-black">키(cm)</p>

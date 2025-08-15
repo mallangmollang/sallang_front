@@ -24,7 +24,7 @@ export default function TextInputForm({
         onChange={(e) => onChange?.(e.target.value)}
         placeholder={placeholder}
         className="
-        text-sm font-medium text-black placeholder-neutral-400"
+        w-full text-sm font-medium text-black placeholder-neutral-400"
         aria-label={placeholder || "텍스트 입력"}
       />
 
