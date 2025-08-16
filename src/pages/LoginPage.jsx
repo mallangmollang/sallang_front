@@ -13,6 +13,8 @@ const LoginPage = () => {
   const [selectedEtc, setSelectedEtc] = useState(false);
   const [etcText, setEtcText] = useState("");
 
+  const navigate = useNavigate();
+
   return (
     <div
       className="
@@ -25,6 +27,7 @@ const LoginPage = () => {
     "
     >
       <PageHeader title="사용자 정보 입력" />
+      {/* Input Container */}
       <div className="flex flex-col w-[361px] h-[852px] items-center gap-5 overflow-hidden bg-white">
         {/* 이름 */}
         <div className="flex flex-col items-start justify-start gap-1">
@@ -58,6 +61,7 @@ const LoginPage = () => {
             />
           </div>
         </div>
+        {/* 키, 몸무게 */}
         <div className="flex flex-row h-[68px] gap-1 items-center">
           <div className="flex flex-col w-[174px] justify-start items-start gap-1">
             <div className="flex flex-row gap-2 overflow-hidden">
@@ -84,9 +88,11 @@ const LoginPage = () => {
         </div>
         {/* 기저질환 */}
         <div className="h-[270px] justify-center items-start gap-1">
+          {/* title */}
           <div className="flex flex-rpw gap-[10px] pb-1 justify-start items-start overflow-hidden">
             <p className="text-xs font-semibold text-black">기저질환</p>
           </div>
+          {/* 기저질환 선택 토글버튼 */}
           <div className="flex flex-wrap w-[361px] h-[198px] gap-x-1 gap-y-0 overflow-hidden">
             <SelectButton label="당뇨병" />
             <SelectButton label="고혈압" />
