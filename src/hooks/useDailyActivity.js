@@ -11,7 +11,6 @@ function todayKey() {
 
 export function useDailyActivity() {
   const [waterMl, setWaterMl] = useState(0);
-  // 식사 여부는 이미 UI에서 제거했지만, 훅을 쓰던 코드가 있을 수 있어 남겨둡니다(미사용이면 안전히 무시됨)
   const [mealDone, setMealDone] = useState(false);
   const [sleepHours, setSleepHours] = useState(0);
 
@@ -55,7 +54,6 @@ export function useDailyActivity() {
     };
   }, []);
 
-  // 1) 로드
   useEffect(() => {
     hydratedRef.current = false;
     setHydrated(false);
@@ -69,7 +67,6 @@ export function useDailyActivity() {
           setMealDone(saved.mealCompleted);
         if (typeof saved.sleepHours === "number")
           setSleepHours(saved.sleepHours);
-        // saved.sleepAtLeast 는 더 이상 사용하지 않음(무시)
       } else {
         setWaterMl(0);
         setMealDone(false);
@@ -92,7 +89,7 @@ export function useDailyActivity() {
         ...prev,
         waterIntakeMl: waterMl,
         mealCompleted: mealDone,
-        sleepHours, // ✅ atLeast 저장 안 함
+        sleepHours,
       };
       localStorage.setItem(KEY, JSON.stringify(next));
     } catch (e) {
@@ -100,18 +97,17 @@ export function useDailyActivity() {
     }
   }, [KEY, waterMl, mealDone, sleepHours]);
 
-  // 액션
   const addWater = () => setWaterMl((v) => Math.max(0, v + 100));
   const subWater = () => setWaterMl((v) => Math.max(0, v - 100));
   const toggleMeal = () => setMealDone((v) => !v);
-  const setSleep = (h) => setSleepHours(h); // ✅ atLeast 처리 없음(표시는 컴포넌트에서)
+  const setSleep = (h) => setSleepHours(h);
 
   return {
     waterMl,
     addWater,
     subWater,
-    mealDone, // 쓰지 않으면 무시
-    toggleMeal, // 쓰지 않으면 무시
+    mealDone,
+    toggleMeal,
     sleepHours,
     setSleep,
     hydrated,
