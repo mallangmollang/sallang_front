@@ -4,16 +4,7 @@ import "./index.css";
 import OnBoardingPage from "./pages/OnBoardingPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
-
-function Home() {
-  return (
-    <main className="min-h-screen grid place-items-center">
-      <div className="space-y-4 text-center">
-        <h1 className="text-3xl font-bold ">Hello Tailwind 🚀</h1>
-      </div>
-    </main>
-  );
-}
+import ShelterPage from "./pages/ShelterPage";
 
 export default function App() {
   return (
@@ -22,6 +13,7 @@ export default function App() {
         <Route path="/" element={<OnBoardingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/main" element={<MainPage />} />
+        <Route path="/shelter" element={<ShelterPage />} />
       </Routes>
     </BrowserRouter>
   );
