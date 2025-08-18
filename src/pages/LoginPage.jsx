@@ -76,7 +76,6 @@ const LoginPage = () => {
       numeric(height) && Number(height) > 0 && Number(height) < 300;
     const hasWeight =
       numeric(weight) && Number(weight) > 0 && Number(weight) < 500;
-    // 기타가 켜졌는데 입력이 비어 있으면 유효하지 않음
     const etcOk =
       !conditions.기타 || (conditions.기타 && etcText.trim().length > 0);
     return hasName && hasGender && hasHeight && hasWeight && etcOk;
