@@ -133,6 +133,25 @@ const LoginPage = () => {
             </p>
           )}
         </div>
+        {/* 생년월일 */}
+        <div className="flex flex-col h-[105px] items-start justify-start gap-1">
+          <div className="flex flex-row gap-[10px] overflow-hidden">
+            <p className="text-xs font-semibold text-black">생년월일</p>
+          </div>
+          <div className="flex flex-row w-[361px] h-[44px] items-center">
+            <TextInputForm
+              value={name}
+              onChange={(val) => setName(val)}
+              onClear={() => setName("")}
+              placeholder="이름을 입력하세요"
+            />
+          </div>
+          {submitted && name.trim().length === 0 && (
+            <p className="text-xs font-semibold text-red-500">
+              이름을 입력해주세요.
+            </p>
+          )}
+        </div>
         {/* 성별 */}
         <div className="flex flex-col h-[105px] justify-start items-start gap-1">
           <div className="flex flex-row gap-[10px] justify-start items-start overflow-hidden">
