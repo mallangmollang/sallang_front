@@ -4,13 +4,13 @@ import PageHeader from "../components/PageHeader";
 import TextInputForm from "../components/TextInputForm";
 import SelectToggle from "../components/SelectToggle";
 import SelectRadioGroup from "../components/SelectRadioGroup";
-import useLoginFormStorage from "../hooks/useLoginFormStorage";
-
-const STORAGE_KEY = "loginForm:v1";
+import useLoginFormStorage, {
+  LOGIN_FORM_STORAGE_KEY,
+} from "../hooks/useLoginFormStorage";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { load, save, clear } = useLoginFormStorage(STORAGE_KEY);
+  const { load, save, clear } = useLoginFormStorage(LOGIN_FORM_STORAGE_KEY);
 
   const [name, setName] = useState("");
   const [gender, setGender] = useState(null);
