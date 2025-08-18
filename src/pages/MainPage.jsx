@@ -91,7 +91,10 @@ const MainPage = () => {
         </button>
       </div>
 
-      <button className="flex items-center justify-center w-full h-[5vh] bg-orange-300  rounded-xl text-white text-lg font-bold">
+      <button
+        onClick={() => navigate("/report")}
+        className="flex items-center justify-center w-full h-[5vh] bg-orange-300  rounded-xl text-white text-lg font-bold"
+      >
         리포트 생성하기
       </button>
       <TipCard />
