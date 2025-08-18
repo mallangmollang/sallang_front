@@ -1,16 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import TextInputForm from "../components/TextInputForm";
 import SelectToggle from "../components/SelectToggle";
 import SelectRadioGroup from "../components/SelectRadioGroup";
+import useLoginFormStorage from "../hooks/useLoginFormStorage";
+
+const STORAGE_KEY = "loginForm:v1";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const { load, save, clear } = useLoginFormStorage(STORAGE_KEY);
+
   const [name, setName] = useState("");
   const [gender, setGender] = useState(null);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-
   const [conditions, setConditions] = useState({
     당뇨병: false,
     고혈압: false,
@@ -20,8 +25,29 @@ const LoginPage = () => {
     없음: false,
   });
   const [etcText, setEtcText] = useState("");
-
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const data = load();
+    if (!data) return;
+    setName(data.name ?? null);
+    setGender(data.gender ?? null);
+    setHeight(
+      typeof data.height === "number" ? String(data.height) : data.height ?? ""
+    );
+    setWeight(
+      typeof data.weight === "number" ? String(data.weight) : data.weight ?? ""
+    );
+    setConditions({
+      당뇨병: !!data.conditions?.당뇨병,
+      고혈압: !!data.conditions?.고혈압,
+      심장병: !!data.conditions?.심장병,
+      신장병: !!data.conditions?.신장병,
+      기타: !!data.conditions?.기타,
+      없음: !!data.conditions?.없음,
+    });
+    setEtcText(data.etcText ?? "");
+  }, [load]);
 
   const toggleCondition = (key) => (next) => {
     setConditions((prev) => {
@@ -60,11 +86,17 @@ const LoginPage = () => {
     e.preventDefault();
     setSubmitted(true);
     if (!isValid) return;
-    // 여기서 수집/전송 로직 추가 가능
-    navigate("/main");
+    const snapshot = {
+      name: name.trim(),
+      gender,
+      height: Number(height),
+      weight: Number(weight),
+      conditions,
+      etcText: etcText.trim(),
+    };
+    const ok = save(snapshot);
+    if (ok) navigate("/main");
   };
-
-  const navigate = useNavigate();
 
   return (
     <div
@@ -84,7 +116,7 @@ const LoginPage = () => {
         className="flex flex-col w-[361px] h-[852px] items-center gap-4 overflow-hidden bg-white"
       >
         {/* 이름 */}
-        <div className="flex flex-col h-[105px]items-start justify-start gap-1">
+        <div className="flex flex-col h-[105px] items-start justify-start gap-1">
           <div className="flex flex-row gap-[10px] overflow-hidden">
             <p className="text-xs font-semibold text-black">이름</p>
           </div>
