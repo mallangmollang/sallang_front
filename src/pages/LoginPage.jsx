@@ -26,6 +26,9 @@ const LoginPage = () => {
   });
   const [etcText, setEtcText] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [birthYear, setBirthYear] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [birthDay, setBirthDay] = useState("");
 
   useEffect(() => {
     const data = load();
@@ -47,6 +50,12 @@ const LoginPage = () => {
       없음: !!data.conditions?.없음,
     });
     setEtcText(data.etcText ?? "");
+    if (data.birthdate) {
+      const [y, m, d] = String(data.birthdate).split("-");
+      setBirthYear(y ?? "");
+      setBirthMonth(m ?? "");
+      setBirthDay(d ?? "");
+    }
   }, [load]);
 
   const toggleCondition = (key) => (next) => {
@@ -69,6 +78,27 @@ const LoginPage = () => {
   };
 
   const numeric = (s) => s !== "" && !Number.isNaN(Number(s));
+  const pad2 = (n) => String(n).padStart(2, "0");
+  const isValidDate = (y, m, d) => {
+    if (!(numeric(y) && numeric(m) && numeric(d))) return false;
+    const yy = Number(y),
+      mm = Number(m),
+      dd = Number(d);
+    const now = new Date();
+    if (yy < 1900 || yy > now.getFullYear()) return false;
+    if (mm < 1 || mm > 12) return false;
+    const last = new Date(yy, mm, 0).getDate();
+    if (dd < 1 || dd > last) return false;
+    const dateObj = new Date(`${yy}-${pad2(mm)}-${pad2(dd)}T00:00:00`);
+    return dateObj <= now;
+  };
+
+  // 생년월일 유효성 검사
+  const isValidDOB = useMemo(
+    () => isValidDate(birthYear, birthMonth, birthDay),
+    [birthYear, birthMonth, birthDay]
+  );
+
   const isValid = useMemo(() => {
     const hasName = name.trim().length > 0;
     const hasGender = gender === "남성" || gender === "여성";
@@ -78,13 +108,31 @@ const LoginPage = () => {
       numeric(weight) && Number(weight) > 0 && Number(weight) < 500;
     const etcOk =
       !conditions.기타 || (conditions.기타 && etcText.trim().length > 0);
-    return hasName && hasGender && hasHeight && hasWeight && etcOk;
-  }, [name, gender, height, weight, conditions.기타, etcText]);
+    return (
+      hasName && hasGender && isValidDOB && hasHeight && hasWeight && etcOk
+    );
+  }, [name, gender, isValidDOB, height, weight, conditions.기타, etcText]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
     if (!isValid) return;
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    const birthDate = new Date(
+      Number(birthYear),
+      Number(birthMonth) - 1,
+      Number(birthDay)
+    );
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+
     const snapshot = {
       name: name.trim(),
       gender,
@@ -92,7 +140,9 @@ const LoginPage = () => {
       weight: Number(weight),
       conditions,
       etcText: etcText.trim(),
+      age,
     };
+
     const ok = save(snapshot);
     if (ok) navigate("/main");
   };
@@ -115,7 +165,7 @@ const LoginPage = () => {
         className="flex flex-col w-[361px] h-[852px] items-center gap-4 overflow-hidden bg-white"
       >
         {/* 이름 */}
-        <div className="flex flex-col h-[105px] items-start justify-start gap-1">
+        <div className="flex flex-col h-[100px] items-start justify-start gap-1">
           <div className="flex flex-row gap-[10px] overflow-hidden">
             <p className="text-xs font-semibold text-black">이름</p>
           </div>
@@ -141,8 +191,8 @@ const LoginPage = () => {
           <SelectRadioGroup
             name="성별"
             value={gender ?? undefined}
-            onChange={setGender} // 선택 변경 핸들러
-            className="flex w-[361px] items-center gap-1" // 레이아웃 맞춤
+            onChange={setGender}
+            className="flex w-[361px] items-center gap-1"
             options={[
               { label: "남성", value: "남성" },
               { label: "여성", value: "여성" },
@@ -151,6 +201,53 @@ const LoginPage = () => {
           {submitted && !(gender === "남성" || gender === "여성") && (
             <p className="font-semibold text-red-500 text-xs">
               성별을 선택해주세요.
+            </p>
+          )}
+        </div>
+        {/* 생년월일 */}
+        <div className="flex flex-col h-[105px] justify-start items-start gap-1">
+          <div className="flex flex-row gap-[10px] justify-start items-start overflow-hidden">
+            <p className="text-xs font-semibold text-black">생년월일</p>
+          </div>
+          <div className="flex w-[361px] items-center gap-1">
+            <div className="w-[120px]">
+              <TextInputForm
+                value={birthYear ?? ""}
+                onChange={setBirthYear}
+                onClear={() => setBirthYear("")}
+                placeholder="YYYY"
+                maxLength={4}
+                inputMode="numeric"
+                aria-label="출생 연도"
+              />
+            </div>
+            <div className="w-[110px]">
+              <TextInputForm
+                value={birthMonth}
+                onChange={setBirthMonth}
+                onClear={() => setBirthMonth("")}
+                placeholder="MM"
+                maxLength={2}
+                inputMode="numeric"
+                aria-label="출생 월"
+              />
+            </div>
+            <div className="w-[110px]">
+              <TextInputForm
+                value={birthDay}
+                onChange={setBirthDay}
+                onClear={() => setBirthDay("")}
+                placeholder="DD"
+                maxLength={2}
+                inputMode="numeric"
+                aria-label="출생 일"
+              />
+            </div>
+          </div>
+
+          {submitted && !isValidDOB && (
+            <p className="text-xs font-semibold text-red-500">
+              올바른 생년월일을 입력해주세요.
             </p>
           )}
         </div>

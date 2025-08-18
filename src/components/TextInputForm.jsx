@@ -5,6 +5,7 @@ export default function TextInputForm({
   onChange,
   placeholder = "",
   onClear,
+  ...rest
 }) {
   return (
     <div
@@ -26,6 +27,7 @@ export default function TextInputForm({
         className="
         w-full text-sm font-medium text-black placeholder-neutral-400"
         aria-label={placeholder || "텍스트 입력"}
+        {...rest}
       />
 
       {/* 값이 있을 때만 클리어 버튼 표시 */}
