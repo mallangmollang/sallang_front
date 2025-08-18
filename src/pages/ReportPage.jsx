@@ -12,7 +12,7 @@ export default function ReportPage() {
       <PageHeader title="일일 건강 리포트" />
       {/* content */}
       <div className="flex flex-col w-full justify-start bg-neutral-50 items-center gap-4 px-4 pb-20">
-        {/* 건강 지표 */}
+        {/* 하루 지표 */}
         <div
           className="flex flex-row w-full justify-start items-start 
         gap-2 pt-2 overflow-hidden"
@@ -28,6 +28,7 @@ export default function ReportPage() {
               평균 온도: 섭씨 27도
             </p>
           </div>
+          {/* 수분 */}
           <div
             className="flex flex-col flex-1 items-start h-[90px] 
           p-3 rounded-[12px] 
@@ -37,9 +38,10 @@ export default function ReportPage() {
             <p className="text-sm font-bold text-zinc-950">섭취량</p>
             <p className="text-xs font-bold  text-gray-500">1200ml</p>
           </div>
+          {/* 걸음 수 */}
           <div
             className="flex flex-col flex-1 items-start h-[90px] 
-          p-3 rounded-[12px] bg-white"
+          px-3 pt-3 pb-4 rounded-[12px] bg-white"
           >
             <p className="text-sm font-bold text-zinc-950">걸음 수</p>
             <p className="text-xs font-bold  text-gray-500">10320</p>
