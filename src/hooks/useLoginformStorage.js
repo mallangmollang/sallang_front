@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-export function useLoginFormStorage(storageKey = "loginForm:v1") {
+export default function useLoginFormStorage(storageKey = "loginForm:v1") {
   // load함수: localstorage에서 해당 키를 읽고 Json 파싱을 한다.
   const load = useCallback(() => {
     try {

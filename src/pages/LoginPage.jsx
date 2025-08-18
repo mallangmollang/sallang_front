@@ -232,6 +232,7 @@ const LoginPage = () => {
         </div>
         {/* 제출 버튼 */}
         <button
+          type="submit"
           className="
             flex items-center justify-center gap-[10px]
             w-[329px] h-[61px]
