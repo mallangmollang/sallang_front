@@ -1,7 +1,7 @@
 // AiAnalysisCard.jsx
 export default function AiAnalysisCard({ icon, title, messages }) {
   return (
-    <div className="w-full flex flex-row items-start px-4 py-1 bg-white border-2 border-orange-600 rounded-[12px]">
+    <div className="w-full flex flex-row items-start px-4 py-1 bg-white border-2 border-orange-300 rounded-[12px]">
       {/* 아이콘 영역 */}
       <div className="relative w-[44px] h-[167px] pr-12">
         <div className="absolute left-[7px] top-[28px] w-[37px] h-[37px]">
