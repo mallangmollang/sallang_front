@@ -3,7 +3,7 @@ import SuggestionItem from "./SuggestionItem.jsx";
 
 export default function TomorrowSuggestionsCard({ suggestions, CheckIcon }) {
   return (
-    <div className="flex flex-col w-full items-center gap-2 px-6 py-6 bg-white border-2 border-amber-400 rounded-[12px]">
+    <div className="flex flex-col w-full items-center gap-2 px-6 py-6 bg-white border-2 border-green-200 rounded-[12px]">
       {/* 타이틀 */}
       <div className="w-full flex flex-row items-center gap-2">
         <div className="w-4 h-4">

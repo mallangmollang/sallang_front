@@ -9,13 +9,13 @@ export default function WorkRestBar({ workMinutes = 0, restMinutes = 0 }) {
       {/* 진행바 */}
       <div className="w-full h-2 rounded-[8px] bg-neutral-200 overflow-hidden flex">
         <div
-          className="h-full bg-orange-400"
+          className="h-full bg-orange-500"
           style={{ width: `${workRatio}%` }}
           aria-label="작업 시간 비율"
           role="img"
         />
         <div
-          className="h-full bg-orange-300"
+          className="h-full bg-orange-200"
           style={{ width: `${restRatio}%` }}
           aria-label="휴식 시간 비율"
           role="img"
@@ -25,13 +25,13 @@ export default function WorkRestBar({ workMinutes = 0, restMinutes = 0 }) {
       {/* 라벨/값 */}
       <div className="flex items-center justify-between pt-1">
         <p className="text-sm text-black">작업 시간</p>
-        <p className="text-sm font-extrabold text-orange-400">
+        <p className="text-sm font-extrabold text-orange-500">
           {Math.floor(workMinutes / 60)}시간 {workMinutes % 60}분
         </p>
       </div>
       <div className="flex items-center justify-between">
         <p className="text-sm text-black">휴식 시간</p>
-        <p className="text-sm font-extrabold text-orange-300">
+        <p className="text-sm font-extrabold text-orange-200">
           {Math.floor(restMinutes / 60)}시간 {restMinutes % 60}분
         </p>
       </div>

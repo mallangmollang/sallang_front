@@ -17,9 +17,10 @@ export default function ReportPage() {
       <PageHeader title="일일 건강 리포트" />
 
       {/* content */}
-      <div className="flex flex-col w-full justify-start bg-neutral-50 items-center gap-4 px-4 pb-20">
+      <div className="flex flex-col w-full justify-start bg-neutral-50 items-center gap-5 px-4 pb-15">
         {/* 하루 지표 */}
-        <div className="flex flex-row w-full justify-start items-start gap-2 pt-2 overflow-hidden">
+        <div className="grid grid-cols-3 w-full gap-3 auto-rows-fr pt-2 items-stretch">
+          {" "}
           <MetricCard
             title="날씨"
             items={[
@@ -32,7 +33,7 @@ export default function ReportPage() {
         </div>
 
         {/* 노동 시간 분석 */}
-        <div className="w-full px-6 py-4 bg-white rounded-[12px]">
+        <div className="w-full px-6 py-4 border-2 border-red-200 bg-white rounded-[12px]">
           <p className="text-base font-bold text-black mb-3">
             총 노동시간 / 휴식시간 분석
           </p>

@@ -1,7 +1,7 @@
 // HealthScoreCard.jsx
 export default function HealthScoreCard({ totalScore, details }) {
   return (
-    <div className="w-full flex flex-col items-center px-4 py-1 border-2 border-blue-600 bg-white rounded-[12px]">
+    <div className="w-full flex flex-col items-center px-4 py-1 border-2 border-blue-300 bg-white rounded-[12px]">
       {/* 총점 */}
       <div className="w-full flex flex-row justify-between items-center px-2 py-3">
         <p className="text-lg font-extrabold text-blue-700">오늘의 건강 점수</p>
