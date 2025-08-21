@@ -22,7 +22,7 @@ export default function ReportPage() {
       {/* content */}
       <div className="flex flex-col w-full justify-start bg-neutral-50 items-center gap-5 px-4 pb-15">
         {/* 하루 지표 */}
-        <div className="grid grid-cols-3 w-full gap-3 auto-rows-fr pt-2 items-stretch">
+        <div className="grid grid-cols-3 w-full gap-3 auto-rows-fr pt-3 items-stretch">
           {" "}
           <MetricCard
             title="날씨"
