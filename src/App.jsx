@@ -5,6 +5,7 @@ import OnBoardingPage from "./pages/OnBoardingPage";
 import LoginPage from "./pages/LoginPage";
 import MainPage from "./pages/MainPage";
 import ShelterPage from "./pages/ShelterPage";
+import ReportPage from "./pages/ReportPage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/shelter" element={<ShelterPage />} />
+        <Route path="/report" element={<ReportPage />} />
       </Routes>
     </BrowserRouter>
   );
