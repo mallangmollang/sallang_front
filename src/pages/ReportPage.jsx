@@ -9,6 +9,9 @@ import MetricCard from "../components/MetricCard";
 import HealthScoreCard from "../components/HealthScoreCard";
 import AiAnalysisCard from "../components/AiAnalysisCard";
 import TomorrowSuggestionsCard from "../components/TomorrowSuggestionsCard";
+import weatherIcon from "../assets/weatherIcon.svg";
+import waterIntakeIcon from "../assets/waterIntakeIcon.svg";
+import stepIcon from "../assets/stepIcon.svg";
 
 export default function ReportPage() {
   return (
@@ -27,9 +30,18 @@ export default function ReportPage() {
               { label: "평균 온도", value: "섭씨 27도" },
               { label: "평균 습도", value: "87%" },
             ]}
+            icon={weatherIcon}
           />
-          <MetricCard title="수분 섭취량" items={[{ value: "1200ml" }]} />
-          <MetricCard title="걸음 수" items={[{ value: "10320" }]} />
+          <MetricCard
+            title="수분 섭취량"
+            items={[{ value: "1200ml" }]}
+            icon={waterIntakeIcon}
+          />
+          <MetricCard
+            title="걸음 수"
+            items={[{ value: "10320" }]}
+            icon={stepIcon}
+          />
         </div>
 
         {/* 노동 시간 분석 */}
