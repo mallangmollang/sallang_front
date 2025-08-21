@@ -148,21 +148,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div
-      className="
-    flex flex-col           
-    w-full min-h-screen     
-    items-center            
-    gap-5              
-    bg-white                
-    overflow-hidden         
-    "
-    >
+    <div className="max-w-screen-sm mx-auto items-center bg-white">
       <PageHeader title="사용자 정보 입력" />
       {/* Input Container */}
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col w-[361px] h-[852px] items-center gap-4 overflow-hidden bg-white"
+        className="flex flex-col w-full h-[852px] items-center pt-4 pb-8 gap-4 overflow-hidden bg-white"
       >
         {/* 이름 */}
         <div className="flex flex-col h-[100px] items-start justify-start gap-1">
