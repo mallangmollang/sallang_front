@@ -40,7 +40,7 @@ export default function WorkRestBar({ workMinutes = 0, restMinutes = 0 }) {
 
       <div className="flex items-center justify-between pb-1">
         <p className="text-sm text-black">총 시간</p>
-        <p className="text-sm font-extrabold text-black">
+        <p className="text-sm font-extrabold text-orange-700">
           {Math.floor(total / 60)}시간 {total % 60}분
         </p>
       </div>
