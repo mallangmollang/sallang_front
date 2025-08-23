@@ -1,29 +1,54 @@
-// MetricCard.jsx
-export default function MetricCard({ title, items, icon }) {
+export default function MetricCard({ title, items = [], icon }) {
   return (
-    <div className="flex flex-row h-full w-full min-w-0 p-3 rounded-[12px] border-2 border-violet-200 bg-white items-start justify-between">
-      {/* 왼쪽 텍스트 영역 */}
-      <div className="flex flex-col min-w-0">
-        <p className="text-sm font-bold text-gray-900 break-words">{title}</p>
-        {items.map((item, idx) => (
+    <div className="w-full h-full min-w-0 px-3 py-3 rounded-2xl border border-violet-200 bg-white shadow-sm flex items-start justify-between min-h-[120px]">
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center justify-between">
           <p
-            key={idx}
-            className={`${
-              item.size === "lg" ? "text-sm" : "text-xs"
-            } font-bold ${item.color || "text-gray-500"} break-words`}
+            className="font-semibold text-gray-900 break-words leading-snug
+                      text-[clamp(12px,3.4vw,14px)]"
           >
-            {item.label && <>{item.label}: </>}
-            {item.value}
+            {title}
           </p>
-        ))}
-      </div>
-
-      {/* 오른쪽 아이콘 */}
-      {icon && (
-        <div className="flex-shrink-0 ml-2">
-          <img src={icon} alt="card icon" className="w-9 h-9" />
+          {icon && (
+            <div className="shrink-0 w-9 h-9 ml-2 grid place-items-center">
+              <img
+                src={icon}
+                alt=""
+                aria-hidden="true"
+                className="w-8 h-8 opacity-90"
+                draggable={false}
+              />
+            </div>
+          )}
         </div>
-      )}
+
+        <div className="mt-1.5 space-y-1.5">
+          {items.map((item, idx) => (
+            <div key={idx} className="min-w-0">
+              {item.label && (
+                <span
+                  className="mr-1  text-gray-500 align-baseline
+                                 text-[clamp(11px,3.0vw,13px)]"
+                >
+                  {item.label}
+                  {item.label.endsWith(":") ? "" : ":"}
+                </span>
+              )}
+              <span
+                className={[
+                  item.size === "lg"
+                    ? "text-[clamp(16px,4.2vw,20px)] font-extrabold"
+                    : "text-[clamp(12px,3.4vw,14px)] font-semibold",
+                  item.color || "text-gray-900",
+                  "tabular-nums tracking-tight align-baseline break-words",
+                ].join(" ")}
+              >
+                {item.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
