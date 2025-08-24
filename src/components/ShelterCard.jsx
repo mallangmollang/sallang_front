@@ -47,7 +47,6 @@ export default function ShelterCard({
   name,
   category,
   roadAddress,
-  phone,
   distanceM,
   position,
 }) {
@@ -91,9 +90,6 @@ export default function ShelterCard({
               )}
             </div>
             <p className="text-neutral-600 mt-2">{roadAddress}</p>
-            <p className="text-neutral-400 text-sm mt-1">
-              운영시간: 00:00~24:00 {/* 더미 */}
-            </p>
           </div>
 
           {distText && (
@@ -118,18 +114,6 @@ export default function ShelterCard({
               <span className="flex items-center gap-2">길찾기</span>
             </div>
           </button>
-
-          <a
-            href={phone ? `tel:${phone.replaceAll("-", "")}` : undefined}
-            aria-disabled={!phone}
-            className={`h-12 w-14 grid place-items-center rounded-xl ${
-              phone
-                ? "bg-neutral-100 hover:bg-neutral-200"
-                : "bg-neutral-100 opacity-50"
-            }`}
-          >
-            📞
-          </a>
         </div>
       </div>
 
