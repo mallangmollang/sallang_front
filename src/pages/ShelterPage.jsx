@@ -144,8 +144,6 @@ export default function ShelterPage() {
     if (coords?.lat && coords?.lon) fetchList();
   }, [coords?.lat, coords?.lon, endpoint]);
 
-  const onRefresh = () => fetchList();
-
   return (
     <div className="max-w-screen-sm mx-auto p-4">
       <header className="sticky top-0 bg-white z-10">
@@ -158,14 +156,7 @@ export default function ShelterPage() {
             ←
           </button>
           <h1 className="text-lg text-center w-full font-bold">근처 쉼터</h1>
-          <button
-            onClick={onRefresh}
-            className="w-9 h-9 grid place-items-center rounded-full text-xl"
-            aria-label="새로고침"
-            title="새로고침"
-          >
-            ⟳
-          </button>
+          <button className="w-9 h-9"></button>
         </div>
         <div className="h-px bg-neutral-200" />
       </header>
